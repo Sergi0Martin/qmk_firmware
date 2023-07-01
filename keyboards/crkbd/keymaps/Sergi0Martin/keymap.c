@@ -36,18 +36,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     KC_LSFT,  KC_GRV, KC_BSLS, KC_MINS,  KC_EQL, KC_LBRC,                      KC_RBRC, KC_HOME,   KC_UP,  KC_END, KC_PGUP,  KC_DEL,
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    KC_LCTL, KC_CAPS,   KC_NO,   KC_NO,   KC_NO, KC_LALT,                      KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,  KC_ESC,
+    KC_LCTL, KC_CAPS,   KC_NO,   KC_NO,  KC_F12, KC_LALT,                      KC_PSCR, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,  KC_ESC,
 //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                         KC_LGUI,   TO(0),  KC_SPC,     KC_ENT,   TO(2), KC_RALT
                                     //+--------------------------|  |--------------------------+
   ),
     [2] = LAYOUT_split_3x6_3(
 //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     KC_TAB,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_BSPC,
+     KC_TAB,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, KC_BSPC,
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    KC_LSFT,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,                      KC_MNXT, KC_MPLY, KC_VOLU,   KC_NO, KC_BRIU,   KC_NO,
+    KC_LSFT,  KC_F11,  KC_F12,   KC_NO,   KC_NO,   KC_NO,                      KC_MNXT, KC_MPLY, KC_VOLU,   KC_NO, KC_BRIU,  KC_DEL,
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    KC_LCTL, KC_MYCM, KC_CALC, KC_EXEC,  KC_F11,  KC_F12,                      KC_MPRV, KC_MSTP, KC_VOLD, KC_MUTE, KC_BRID,   KC_NO,
+    KC_LCTL, KC_MYCM, KC_CALC, KC_EXEC,   KC_NO,   KC_NO,                      KC_MPRV, KC_MSTP, KC_VOLD, KC_MUTE, KC_BRID,  KC_ESC,
 //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                         KC_LGUI,   TO(1),  KC_SPC,     KC_ENT,   TO(3), KC_RALT
                                     //+--------------------------|  |--------------------------+
