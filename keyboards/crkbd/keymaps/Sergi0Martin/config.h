@@ -15,7 +15,7 @@
 // https://github.com/qmk/qmk_firmware/blob/master/docs/feature_oled_driver.md
 #ifdef OLED_ENABLE
 #define OLED_TIMEOUT 10000
-// #define OLED_DISPLAY_64X128
+#define OLED_DISPLAY_64X128
 #endif
 
 #ifdef RGBLIGHT_ENABLE
