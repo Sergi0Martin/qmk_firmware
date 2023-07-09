@@ -39,11 +39,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
     [3] = LAYOUT_split_3x6_3(
 //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    RGB_TOG, RGB_M_T, RGB_M_P, RGB_M_B,RGB_M_SW,   KC_NO,                        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI,   KC_NO,   KC_NO,                        BL_UP,   BL_ON,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,   KC_NO,                        BL_UP,   BL_ON,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,   KC_NO,   KC_NO,                      BL_DOWN,  BL_OFF,   KC_NO,   KC_NO,   KC_NO, QK_BOOT,
+   RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,   KC_NO,                      BL_DOWN,  BL_OFF,   KC_NO,   KC_NO,   KC_NO, QK_BOOT,
 //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_NO,   TO(2),   KC_NO,      KC_NO,   TO(2),   KC_NO
                                     //+--------------------------|  |--------------------------+
