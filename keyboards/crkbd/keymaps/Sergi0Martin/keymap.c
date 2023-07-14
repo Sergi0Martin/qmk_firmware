@@ -21,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     KC_LSFT,  KC_GRV, KC_BSLS, KC_MINS,  KC_EQL, KC_LBRC,                      KC_RBRC, KC_LEFT,   KC_UP, KC_RGHT, KC_PGUP,  KC_DEL,
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    KC_LCTL, KC_CAPS,   KC_NO,   KC_NO,  KC_F12, KC_LALT,                      KC_PSCR, KC_HOME, KC_DOWN,  KC_END, KC_PGDN,  KC_ESC,
+    KC_LCTL,   KC_F5,  KC_F10,  KC_F11,  KC_F12, KC_LALT,                      KC_PSCR, KC_HOME, KC_DOWN,  KC_END, KC_PGDN,  KC_ESC,
 //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                         KC_LGUI,   TO(0),  KC_SPC,     KC_ENT,   TO(2), KC_RALT
                                     //+--------------------------|  |--------------------------+
@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     KC_LSFT,  KC_F11,  KC_F12,   KC_NO,   KC_NO,   KC_NO,                      KC_MNXT, KC_MPLY, KC_VOLU,   KC_NO, KC_BRIU,  KC_DEL,
 //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    KC_LCTL, KC_MYCM, KC_CALC, KC_EXEC,   KC_NO,   KC_NO,                      KC_MPRV, KC_MSTP, KC_VOLD, KC_MUTE, KC_BRID,  KC_ESC,
+    KC_LCTL, KC_CAPS, KC_CALC,   KC_NO,   KC_NO,   KC_NO,                      KC_MPRV, KC_MSTP, KC_VOLD, KC_MUTE, KC_BRID,  KC_ESC,
 //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                         KC_LGUI,   TO(1),  KC_SPC,     KC_ENT,   MO(3), KC_RALT
                                     //+--------------------------|  |--------------------------+
@@ -77,7 +77,7 @@ bool oled_task_user(void) {
             break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
-            oled_write_ln_P(PSTR("Undefined"), false);
+            // oled_write_ln_P(PSTR("Undefined"), false);
             render_logo();
     }
 
