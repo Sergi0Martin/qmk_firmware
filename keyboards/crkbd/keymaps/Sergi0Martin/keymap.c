@@ -203,43 +203,46 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 
 static void print_logo_narrow(void) {
     render_logo();
-if (current_wpm > 0) {
-    anim_sleep = timer_read32();
-    /* wpm counter */
-    oled_set_cursor(0, 14);
-    oled_write(get_u8_str(get_current_wpm(), '0'), false);
-
-    oled_set_cursor(0, 15);
-    oled_write(" wpm", false);
-    /* this fixes the screen on and off bug */
-    } 
-    else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
-        /* clear */
-        oled_set_cursor(0,0);
-        oled_write("                                                                                                                        ", false);
-        oled_off();
-    }
 }
 
 static void print_status_narrow(void) {
     /* Print current layer */
     oled_write("LAYER", false);
-
-    oled_set_cursor(0, 6);
+    oled_set_cursor(0, 2);
 
     switch (get_highest_layer(layer_state)) {
         case 0:
-            oled_write("Base", false);
+            oled_write(" Base", false);
             break;
         case 1:
-            oled_write("Symbols", false);
+            oled_write(" Symb", false);
             break;
         case 2:
-            oled_write("Functions", false);
+            oled_write(" Func", false);
             break;
         default:
             oled_write("Undef", false);
     }
+
+    /* WPM RENDER START */
+    if (current_wpm > 0) {
+        anim_sleep = timer_read32();
+        /* wpm counter */
+        oled_set_cursor(0, 10);
+        oled_write("  ", false);
+        oled_write(get_u8_str(get_current_wpm(), '0'), false);
+
+        oled_set_cursor(0, 11);
+        oled_write("WPM", false);
+        /* this fixes the screen on and off bug */
+        } 
+        // else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
+        //     /* clear */
+        //     oled_set_cursor(0,0);
+        //     oled_write("                                                                                                                        ", false);
+        //     oled_off();
+        // }
+        /* WPM RENDER END */
 
     /* KEYBOARD PET RENDER START */
     render_luna(0, 13);
@@ -247,11 +250,11 @@ static void print_status_narrow(void) {
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) {
-        return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+    if (is_keyboard_master()) {
+        return OLED_ROTATION_270;
     }
-
-    return rotation;
+    
+    return OLED_ROTATION_180;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -285,7 +288,7 @@ bool oled_task_user(void) {
         print_status_narrow();
     } else {
         print_logo_narrow();
-        // oled_scroll_left();  // Turns on scrolling
+        oled_scroll_left();  // Turns on scrolling
     }
     return false;
 }
