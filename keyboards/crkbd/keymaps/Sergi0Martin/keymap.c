@@ -62,11 +62,11 @@ static void render_logo(void) {
 /* KEYBOARD PET START */
 
 /* settings */
-#    define MIN_WALK_SPEED      10
-#    define MIN_RUN_SPEED       40
+#    define MIN_WALK_SPEED      5
+#    define MIN_RUN_SPEED       30
 
 /* advanced settings */
-#    define ANIM_FRAME_DURATION 200  // how long each frame lasts in ms
+#    define ANIM_FRAME_DURATION 150  // how long each frame lasts in ms
 #    define ANIM_SIZE           96   // number of bytes in array. If you change sprites, minimize for adequate firmware size. max is 1024
 
 /* timers */
@@ -190,22 +190,23 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
     if (current_wpm > 0) {
         oled_on();
         anim_sleep = timer_read32();
-    } else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
+    } 
+    else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
         /* clear */
-        oled_set_cursor(0,0);
-        oled_write("                                                                                                    ", false);
+        // oled_set_cursor(0,0);
+        // oled_write("                                                                                                    ", false);
         oled_off();
-        oled_set_cursor(LUNA_X,LUNA_Y);
+        // oled_set_cursor(LUNA_X,LUNA_Y);
     }
 }
 
 /* KEYBOARD PET END */
 
-static void print_logo_narrow(void) {
+static void print_right_screen(void) {
     render_logo();
 }
 
-static void print_status_narrow(void) {
+static void print_left_screen(void) {
     /* Print current layer */
     oled_write("LAYER", false);
     oled_set_cursor(0, 2);
@@ -221,7 +222,7 @@ static void print_status_narrow(void) {
             oled_write(" Func", false);
             break;
         default:
-            oled_write("Undef", false);
+            oled_write(" QMK ", false);
     }
 
     /* WPM RENDER START */
@@ -236,12 +237,12 @@ static void print_status_narrow(void) {
         oled_write("WPM", false);
         /* this fixes the screen on and off bug */
         } 
-        // else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
-        //     /* clear */
-        //     oled_set_cursor(0,0);
-        //     oled_write("                                                                                                                        ", false);
-        //     oled_off();
-        // }
+        else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
+            /* clear */
+            // oled_set_cursor(0,0);
+            // oled_write("                                                                                                                        ", false);
+            oled_off();
+        }
         /* WPM RENDER END */
 
     /* KEYBOARD PET RENDER START */
@@ -259,23 +260,24 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
-    case 0:
-        rgb_matrix_reload_from_eeprom();
-        break;
-    case 1:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-        rgb_matrix_sethsv_noeeprom(HSV_TEAL);
-        break;
-    case 2:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-        rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
-        break;
-    case 3:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-        rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
-        break;
+        case 0:
+            rgb_matrix_reload_from_eeprom();
+            break;
+        case 1:
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
+            rgb_matrix_sethsv_noeeprom(HSV_TEAL);
+            break;
+        case 2:
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
+            rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
+            break;
+        case 3:
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
+            rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
+            break;
     }
-  return state;
+    
+    return state;
 }
 
 bool oled_task_user(void) {
@@ -285,9 +287,9 @@ bool oled_task_user(void) {
     /* KEYBOARD PET VARIABLES END */
 
     if (is_keyboard_master()) {
-        print_status_narrow();
+        print_left_screen();
     } else {
-        print_logo_narrow();
+        print_right_screen();
         oled_scroll_left();  // Turns on scrolling
     }
     return false;
