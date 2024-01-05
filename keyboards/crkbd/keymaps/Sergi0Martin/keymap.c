@@ -193,13 +193,12 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
     } 
     else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
         /* clear */
-        // oled_set_cursor(0,0);
-        // oled_write("                                                                                                    ", false);
+        oled_set_cursor(0,0);
+        oled_write("                                                                                                    ", false);
         oled_off();
-        // oled_set_cursor(LUNA_X,LUNA_Y);
+        oled_set_cursor(LUNA_X,LUNA_Y);
     }
 }
-
 /* KEYBOARD PET END */
 
 static void print_right_screen(void) {
@@ -239,8 +238,8 @@ static void print_left_screen(void) {
         } 
         else if(timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
             /* clear */
-            // oled_set_cursor(0,0);
-            // oled_write("                                                                                                                        ", false);
+            oled_set_cursor(0,0);
+            oled_write("                                                                                                                        ", false);
             oled_off();
         }
         /* WPM RENDER END */
