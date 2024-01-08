@@ -8,12 +8,9 @@ RGB_MATRIX_EFFECT(QMK)
 bool Base(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
 
-    for (uint8_t i = 0; i < 54; i++) {
-        RGB_MATRIX_TEST_LED_FLAGS();
-        rgb_matrix_set_color(i, 0x00, 0xFF, 0xFF); // Azul cian     
-    }
+    rgb_matrix_set_color_all(0x00, 0xFF, 0xFF); // Azul cian     
 
-    rgb_matrix_set_color(6, 0xF4, 0x02, 0xFF); // Morado
+    rgb_matrix_set_color(6, 0xF4, 0x02, 0xFF);
     rgb_matrix_set_color(13, 0xF4, 0x02, 0xFF);
     rgb_matrix_set_color(14, 0xF4, 0x02, 0xFF);
 
@@ -26,11 +23,8 @@ bool Base(effect_params_t* params) {
 
 bool Symbols(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
-    
-    for (uint8_t i = led_min; i < led_max; i++) {
-        RGB_MATRIX_TEST_LED_FLAGS();
-        rgb_matrix_set_color(i, 0xF4, 0x02, 0xFF);        
-    }
+
+    rgb_matrix_set_color_all(0xF4, 0x02, 0xFF); // Morado       
 
     // for (uint8_t i = 1; i < 42; i++) {
     //     RGB_MATRIX_TEST_LED_FLAGS();
@@ -55,10 +49,8 @@ bool Symbols(effect_params_t* params) {
 bool Functions(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
     
-    for (uint8_t i = led_min; i < led_max; i++) {
-        RGB_MATRIX_TEST_LED_FLAGS();
-        rgb_matrix_set_color(i, 0xEC, 0xFF, 0x00);        
-    }
+    // rgb_matrix_set_color_all(0xEC, 0xFF, 0x00); // Amarillo  
+    rgb_matrix_set_color_all(0xF4, 0x02, 0xFF); // Morado  
 
     // for (uint8_t i = led_min; i < led_max; i++) {
     //     RGB_MATRIX_TEST_LED_FLAGS();
@@ -87,11 +79,9 @@ bool Functions(effect_params_t* params) {
 
 bool QMK(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
-    
-    for (uint8_t i = led_min; i < led_max; i++) {
-        RGB_MATRIX_TEST_LED_FLAGS();
-        rgb_matrix_set_color(i, 0xFF, 0x04, 0x08);        
-    }
+
+    rgb_matrix_set_color_all(0xFF, 0x04, 0x08); // Rojo  
+
     // for (uint8_t i = led_min; i < led_max; i++) {
     //     RGB_MATRIX_TEST_LED_FLAGS();
     //     rgb_matrix_set_color(i, 0x00, 0x00, 0x00);        
