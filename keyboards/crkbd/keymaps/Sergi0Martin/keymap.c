@@ -80,7 +80,7 @@ void setRGBLayer(int n) {
             rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_Functions);
             break;
         case 3:
-            rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_QMK);
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_CUSTOM_Qmk);
             break;
     }
 };

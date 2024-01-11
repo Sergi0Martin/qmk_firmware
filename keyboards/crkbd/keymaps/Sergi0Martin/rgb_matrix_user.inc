@@ -1,7 +1,7 @@
 RGB_MATRIX_EFFECT(Base)
 RGB_MATRIX_EFFECT(Symbols)
 RGB_MATRIX_EFFECT(Functions)
-RGB_MATRIX_EFFECT(QMK)
+RGB_MATRIX_EFFECT(Qmk)
 
 #ifdef RGB_MATRIX_CUSTOM_EFFECT_IMPLS
 
@@ -20,16 +20,16 @@ bool Base(effect_params_t* params) {
 
     return led_max < RGB_MATRIX_LED_COUNT;
 }
-
+ 
 bool Symbols(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
 
-    rgb_matrix_set_color_all(0xF4, 0x02, 0xFF); // Morado       
+    // rgb_matrix_set_color_all(0xF4, 0x02, 0xFF); // Morado       
 
-    // for (uint8_t i = 1; i < 42; i++) {
-    //     RGB_MATRIX_TEST_LED_FLAGS();
-    //     rgb_matrix_set_color(i, 0xE8, 0xBE, 0x3C);        
-    // }
+    for (uint8_t i = led_min; i < 54; i++) {
+        RGB_MATRIX_TEST_LED_FLAGS();
+        rgb_matrix_set_color(i, 0xF4, 0x02, 0xFF); // Morado        
+    }
 
     // for (uint8_t i = 16; i < 24; i++) {
     //     RGB_MATRIX_TEST_LED_FLAGS();
@@ -77,7 +77,7 @@ bool Functions(effect_params_t* params) {
     return led_max < RGB_MATRIX_LED_COUNT;
 }
 
-bool QMK(effect_params_t* params) {
+bool Qmk(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
 
     rgb_matrix_set_color_all(0xFF, 0x04, 0x08); // Rojo  

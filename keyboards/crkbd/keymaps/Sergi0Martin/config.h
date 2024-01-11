@@ -15,6 +15,7 @@
     // #define RGB_MATRIX_KEYPRESSES // reacts to keypresses
     #define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 80 // limits maximum brightness of LEDs to 150 out of 255. Higher may cause the controller to crash. 
+    #define LED_MATRIX_DEFAULT_VAL 50
     #define RGB_MATRIX_HUE_STEP 8
     #define RGB_MATRIX_SAT_STEP 8
     #define RGB_MATRIX_VAL_STEP 8
