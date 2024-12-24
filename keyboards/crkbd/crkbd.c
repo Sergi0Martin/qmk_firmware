@@ -18,6 +18,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "quantum.h"
 
+#define BASE 0
+#define SYMBOLS 1
+#define FUNCTIONS 2
+#define QMK 3
+
 #ifdef SWAP_HANDS_ENABLE
 __attribute__((weak)) const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
     // Left
@@ -46,16 +51,16 @@ static void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
         case 0:
-            oled_write_ln_P(PSTR("Default"), false);
+            oled_write_ln_P(PSTR(" Base"), false);
             break;
         case 1:
-            oled_write_ln_P(PSTR("Lower"), false);
+            oled_write_ln_P(PSTR(" Symb"), false);
             break;
         case 2:
-            oled_write_ln_P(PSTR("Raise"), false);
+            oled_write_ln_P(PSTR(" Func"), false);
             break;
         case 3:
-            oled_write_ln_P(PSTR("Adjust"), false);
+            oled_write_ln_P(PSTR(" QMK"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
@@ -161,3 +166,61 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     return process_record_user(keycode, record);
 }
 #endif // OLED_ENABLE
+
+
+/// CUSTOM Sergio
+
+// // Light LEDs 0 to 12 red when caps lock is active. Hard to ignore!
+// const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {0, 6, HSV_YELLOW},
+//     {7, 7, HSV_YELLOW},
+//     {14, 15, HSV_YELLOW}
+// );
+// // Light LEDs 12 & 54 in cyan when keyboard layer 1 is active
+// const rgblight_segment_t PROGMEM my_layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {12, 54, HSV_CYAN}
+// );
+// // Light LEDs 12 & 54 in purple when keyboard layer 2 is active
+// const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {12, 54, HSV_PURPLE}
+// );
+// // Light LEDs 12 & 54 in green when keyboard layer 3 is active
+// const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {12, 54, HSV_GREEN}
+// );
+
+// // Light LEDs 12 & 54 in green when keyboard layer 3 is active
+// const rgblight_segment_t PROGMEM my_layer4_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+//     {12, 54, HSV_WHITE}
+// );
+
+// // Now define the array of layers. Later layers take precedence
+// const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+//     my_capslock_layer,
+//     my_layer1_layer,    // Overrides caps lock layer
+//     my_layer2_layer,    // Overrides other layers
+//     my_layer3_layer,     // Overrides other layers
+//     my_layer4_layer     // Overrides other layers
+// );
+
+// void keyboard_post_init_user(void) {
+//     // Enable the LED layers
+//     rgblight_layers = my_rgb_layers;
+// }
+
+// bool led_update_user(led_t led_state) {
+//     rgblight_set_layer_state(0, led_state.caps_lock);
+//     return true;
+// }
+
+// layer_state_t default_layer_state_set_user(layer_state_t state) {
+//     rgblight_set_layer_state(1, layer_state_cmp(state, BASE));
+//     return state;
+// }
+
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     rgblight_set_layer_state(2, layer_state_cmp(state, SYMBOLS));
+//     rgblight_set_layer_state(3, layer_state_cmp(state, FUNCTIONS));
+//     rgblight_set_layer_state(4, layer_state_cmp(state, QMK));
+//     return state;
+// }
