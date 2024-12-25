@@ -1,7 +1,7 @@
 uint32_t anim_timer = 0;
 uint32_t anim_sleep = 0;
 
-#pragma region KEYBOARD PET
+// #pragma region  KEYBOARD PET
 
 int current_wpm = 0;
 led_t led_usb_state;
@@ -139,7 +139,7 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 }
 
 
-#pragma endregion
+// #pragma endregion
 
 static void render_logo(void) {
     static const char PROGMEM qmk_logo[] = {

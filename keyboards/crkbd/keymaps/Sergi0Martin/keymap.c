@@ -54,31 +54,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-#pragma region OLED
+// #pragma region OLED
 #ifdef OLED_ENABLE
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;
+    oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+        if (is_keyboard_master()) {
+            return OLED_ROTATION_270;
+        }
+        
+        return OLED_ROTATION_180;
     }
-    
-    return OLED_ROTATION_180;
-}
 
-bool oled_task_user(void) {
-    setPetStates();
+    bool oled_task_user(void) {
+        setPetStates();
 
-    if (is_keyboard_master()) {
-        print_left_screen();
-    } else {
-        print_right_screen();
-        oled_scroll_left();  // Turns on scrolling
+        if (is_keyboard_master()) {
+            print_left_screen();
+        } else {
+            print_right_screen();
+            oled_scroll_left();  // Turns on scrolling
+        }
+        return false;
     }
-    return false;
-}
-
 #endif
-#pragma endregion
+// #pragma endregion
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
